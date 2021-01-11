@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
+import { getProductos } from '../../helpers/getProductos'
 import { AgregarForm } from '../agregar-producto/AgregarForm'
-import { db } from '../../firebase/firebase-config';
+import { MostrarProductos } from '../agregar-producto/MostrarProductos'
 
 
 export const AgregarProducto = () => {
@@ -8,31 +9,18 @@ export const AgregarProducto = () => {
     const [productos, setProductos] = useState([])
    
     useEffect(() => {
-        getProductos();
+        getProductos(setProductos);
     }, [])
 
-    const getProductos = ()=>{
-        
-        db.collection('usuarios')
-            .onSnapshot(snap => {
-                const productosArr = [];
-                snap.forEach(snapHijo => {
-                    productosArr.push({
-                        id: snapHijo.id,
-                        ...snapHijo.data()
-                    })
-                })
-            setProductos(productosArr);
-        })
-    }
     return (
         <div className="container">
             <h1 className="text-center mt-5">Agregar Producto</h1>
             <AgregarForm/>
 
-            {productos.map(producto => (
-                <h1>si</h1>
-            ))}
+            <MostrarProductos
+                productos={productos}
+                setProductos={setProductos}
+            />
         </div>
     )
 }
