@@ -2,7 +2,7 @@ import { db } from '../firebase/firebase-config';
 
 export const getProductos = (setProductos) => {
 
-    db.collection('usuarios')
+    db.collection('productos')
         .onSnapshot(snap => {
             const productosArr = [];
             snap.forEach(snapHijo => {

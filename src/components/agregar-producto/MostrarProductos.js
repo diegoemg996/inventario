@@ -1,4 +1,5 @@
 import React from 'react'
+import { deleteProducto } from '../../helpers/deleteProducto';
 
 export const MostrarProductos = ({productos, setProductos}) => {
 
@@ -8,16 +9,16 @@ export const MostrarProductos = ({productos, setProductos}) => {
         setProductos(
             productos.filter( producto =>(
                producto.id !== deleteId 
-            )
-            )
+            ))
         )
+        deleteProducto(deleteId)
     }
 
     return (
         <div>
            {productos.map(producto =>(
                <div key={producto.id}>
-                   <p >{producto.nombre}</p>
+                   <p >{producto.producto}</p>
                    <button
                     value={producto.id}
                     onClick={handleDelete}

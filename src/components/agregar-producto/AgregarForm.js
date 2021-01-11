@@ -5,20 +5,19 @@ import { useForm } from '../../hooks/useForm'
 export const AgregarForm = () => {
 
     const[formValues, handleInputChange, reset] = useForm({
-        codigo: "",
-        nombre: "",
-        linea: "",
-        costo:""
-
+        producto: "",
+        cantidad: "",
+        bodega: ""
     })
 
-    const {codigo, nombre, linea, costo} = formValues;
+    const {producto, cantidad, bodega} = formValues;
 
     const handleSubmit = (e)=>{
         e.preventDefault()
+        const toNumber = parseInt(cantidad, 10);
+        const addItem = {...formValues, cantidad: toNumber};
+        addProducto(addItem);
         reset();
-        console.log(formValues);
-        addProducto(formValues);
     }
 
 
@@ -31,36 +30,27 @@ export const AgregarForm = () => {
                 <input
                     type="text"
                     className="agregar__input"
-                    placeholder="Código"
-                    name="codigo"
-                    value={ codigo }
+                    placeholder="Producto"
+                    name="producto"
+                    value={ producto }
+                    onChange={ handleInputChange }
+                ></input>
+                <input
+                    type="number"
+                    className="agregar__input"
+                    placeholder="Cantidad"
+                    name="cantidad"
+                    value={ cantidad }
                     onChange={ handleInputChange }
                 ></input>
                 <input
                     type="text"
                     className="agregar__input"
-                    placeholder="Nombre"
-                    name="nombre"
-                    value={ nombre }
+                    placeholder="Bodega"
+                    name="bodega"
+                    value={ bodega }
                     onChange={ handleInputChange }
                 ></input>
-                <input
-                    type="text"
-                    className="agregar__input"
-                    placeholder="Linea"
-                    name="linea"
-                    value={ linea }
-                    onChange={ handleInputChange }
-                ></input>
-                <input
-                    type="text"
-                    className="agregar__input"
-                    placeholder="Costo"
-                    name="costo"
-                    value={ costo }
-                    onChange={ handleInputChange }
-                ></input>
-
                 <button
                     type="submit"
                     className="btn btn-primary"
