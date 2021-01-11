@@ -1,0 +1,31 @@
+.rentabilidad__form {
+    width: 100%;
+    margin: 5rem 0;
+}
+
+.rentabilidad__formcontainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.rentabilidad__input {
+    width: 8rem;
+    border: 1px solid #afcfee;
+    border-radius: 10px;
+    &::placeholder {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #afcfee;
+    }
+    &:focus {
+        border: 3px solid darken($color: #afcfee, $amount: 10%)
+    }
+}
+
+.rentabilidad__button {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
