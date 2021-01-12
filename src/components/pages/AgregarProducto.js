@@ -7,6 +7,12 @@ import { MostrarProductos } from '../agregar-producto/MostrarProductos'
 export const AgregarProducto = () => {
 
     const [productos, setProductos] = useState([])
+    const [editar, setEditar] = useState({
+        estado:false,
+        data:{},
+        id: ""
+
+    });
    
     useEffect(() => {
         getProductos(setProductos);
@@ -14,12 +20,22 @@ export const AgregarProducto = () => {
 
     return (
         <div className="container">
-            <h1 className="text-center mt-5">Agregar Producto</h1>
-            <AgregarForm/>
+            {editar.estado
+                ?
+                <h2 className="text-center mt-5">Editar Producto</h2>
+                :
+                <h2 className="text-center mt-5">Agregar Producto</h2>
+            }
+            
+            <AgregarForm
+                editar={editar}
+            />
 
             <MostrarProductos
                 productos={productos}
+                editar={editar}
                 setProductos={setProductos}
+                setEditar={setEditar}
             />
         </div>
     )

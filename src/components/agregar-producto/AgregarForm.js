@@ -1,8 +1,9 @@
 import React from 'react'
 import { addProducto } from '../../helpers/addProducto';
+import { updateProducto } from '../../helpers/updateProducto';
 import { useForm } from '../../hooks/useForm'
 
-export const AgregarForm = () => {
+export const AgregarForm = ({editar}) => {
 
     const[formValues, handleInputChange, reset] = useForm({
         producto: "",
@@ -13,11 +14,20 @@ export const AgregarForm = () => {
     const {producto, cantidad, bodega} = formValues;
 
     const handleSubmit = (e)=>{
-        e.preventDefault()
-        const toNumber = parseInt(cantidad, 10);
-        const addItem = {...formValues, cantidad: toNumber};
-        addProducto(addItem);
-        reset();
+
+        if(editar){
+            e.preventDefault();
+            const toNumber = parseInt(cantidad, 10);
+            const updateItem = {...formValues, cantidad: toNumber};
+            //updateProducto(id, updateItem);
+        }else{
+            e.preventDefault();
+            const toNumber = parseInt(cantidad, 10);
+            const addItem = {...formValues, cantidad: toNumber};
+            addProducto(addItem);
+            reset();
+        }
+
     }
 
 
@@ -54,7 +64,7 @@ export const AgregarForm = () => {
                 <button
                     type="submit"
                     className="btn btn-primary"
-                >Agregar</button>
+                >{editar.estado ? "Editar" : "Agregar"}</button>
             </form>
             
         </div>
