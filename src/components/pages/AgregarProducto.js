@@ -13,6 +13,8 @@ export const AgregarProducto = () => {
         id: ""
 
     });
+
+    const [activeProduct, setActiveProduct] = useState({})
    
     useEffect(() => {
         getProductos(setProductos);
@@ -34,8 +36,10 @@ export const AgregarProducto = () => {
             <MostrarProductos
                 productos={productos}
                 editar={editar}
+                activeProduct={activeProduct}
                 setProductos={setProductos}
                 setEditar={setEditar}
+                setActiveProduct={setActiveProduct}
             />
         </div>
     )

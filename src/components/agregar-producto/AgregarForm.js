@@ -19,7 +19,8 @@ export const AgregarForm = ({editar}) => {
             e.preventDefault();
             const toNumber = parseInt(cantidad, 10);
             const updateItem = {...formValues, cantidad: toNumber};
-            //updateProducto(id, updateItem);
+            updateProducto(editar.id, updateItem);
+            reset();
         }else{
             e.preventDefault();
             const toNumber = parseInt(cantidad, 10);

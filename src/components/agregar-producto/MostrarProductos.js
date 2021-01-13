@@ -2,7 +2,12 @@ import React from 'react'
 import { deleteProducto } from '../../helpers/deleteProducto';
 import { updateProducto } from '../../helpers/updateProducto';
 
-export const MostrarProductos = ({productos, setProductos, editar, setEditar}) => {
+export const MostrarProductos = ({productos,
+     setProductos, 
+     editar, 
+     setEditar, 
+     activeProduct, 
+     setActiveProduct}) => {
 
     const handleDelete = (e)=>{
         const deleteId = e.target.value;
@@ -15,9 +20,18 @@ export const MostrarProductos = ({productos, setProductos, editar, setEditar}) =
         deleteProducto(deleteId)
     }
 
+    const toUpdate = ()=>{
+        const toUpdateItem = productos.filter(producto => (
+            producto.id === editar.id
+        ))
+        setActiveProduct({...toUpdateItem})
+        console.log(activeProduct)
+    }
+
     const handleUpdate = (e)=>{
         setEditar({...editar, estado:true, id:e.target.value});
         console.log(editar);
+        toUpdate();
     }
 
     return (
