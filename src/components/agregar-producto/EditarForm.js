@@ -1,39 +1,43 @@
 import React, { useState } from 'react'
-import { addProducto } from '../../helpers/addProducto';
+import { updateProducto } from '../../helpers/updateProducto';
 import { useForm } from '../../hooks/useForm'
+import { useHistory } from 'react-router-dom';
 
-export const AgregarForm = () => {
+export const EditarForm = ({data}) => {
 
     const [error, setError] = useState(false);
 
+    const history = useHistory();
+
+    const {id: uId, producto: uProducto, cantidad: uCantidad, bodega: uBodega} = data;
     const[formValues, handleInputChange, reset] = useForm({
-        producto: "",
-        cantidad: "",
-        bodega: ""
+        producto: uProducto,
+        cantidad: uCantidad,
+        bodega: uBodega
     })
 
     let {producto, cantidad, bodega} = formValues;
 
 
-    const handleSubmit = (e)=>{
-        e.preventDefault();
-        if(producto === "" || cantidad < 0 || bodega === "" ){
+    const handleUpdate = (e)=>{
+        if(error){
             setError(true);
-            return;
         }else{
-            setError(false);
+            setError(false)
+            e.preventDefault();
             const toNumber = parseInt(cantidad, 10);
             const addItem = {...formValues, cantidad: toNumber};
-            addProducto(addItem);
-            reset();
+            updateProducto(uId,addItem);
+            history.push('/agregar-producto') 
         }
     }
+
 
     return (
         <div>
             <form 
                 className="agregar__form" 
-                onSubmit={handleSubmit}
+                onSubmit={handleUpdate}
             >
                 <input
                     type="text"
@@ -59,11 +63,10 @@ export const AgregarForm = () => {
                     value={ bodega }
                     onChange={ handleInputChange }
                 ></input>
-               
                 <button
                     type="submit"
                     className="btn btn-primary"
-                >Agregar</button>
+                >Editar</button>
             </form>
 
             {error && <p className="text-center mt-3">Ningun campo debe de estar vacio</p>}

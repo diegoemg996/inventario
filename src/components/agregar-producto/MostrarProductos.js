@@ -1,13 +1,11 @@
 import React from 'react'
 import { deleteProducto } from '../../helpers/deleteProducto';
-import { updateProducto } from '../../helpers/updateProducto';
+import { useHistory } from 'react-router-dom';
 
-export const MostrarProductos = ({productos,
-     setProductos, 
-     editar, 
-     setEditar, 
-     activeProduct, 
-     setActiveProduct}) => {
+
+export const MostrarProductos = ({productos,setProductos}) => {
+
+    const history = useHistory()
 
     const handleDelete = (e)=>{
         const deleteId = e.target.value;
@@ -20,23 +18,20 @@ export const MostrarProductos = ({productos,
         deleteProducto(deleteId)
     }
 
-    const toUpdate = ()=>{
-        const toUpdateItem = productos.filter(producto => (
-            producto.id === editar.id
-        ))
-        setActiveProduct({...toUpdateItem})
-        console.log(activeProduct)
+    const handleUpdate = (e)=>{
+        const itemSelected = handleSelectedItem(e.target.value);
+        history.push(`/editar/${e.target.value}`, itemSelected)  
     }
 
-    const handleUpdate = (e)=>{
-        setEditar({...editar, estado:true, id:e.target.value});
-        console.log(editar);
-        toUpdate();
+    const handleSelectedItem = (id)=>{
+        return productos.filter( producto =>(
+            producto.id === id 
+         ))
     }
 
     return (
-        <div>
-            <table className="table table-striped table-hover mt-5">
+        <div className="mostrar__table">
+            <table className="table table-striped table-hover mt-5 ">
             <thead>
                 <tr>
                     <th scope="col">Producto</th>
@@ -45,7 +40,7 @@ export const MostrarProductos = ({productos,
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                 {productos.map(producto => (
                     <tr key={producto.id}>
                         <td>{producto.producto}</td>
