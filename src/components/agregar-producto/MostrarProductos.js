@@ -1,14 +1,18 @@
 import React from 'react'
 import { deleteProducto } from '../../helpers/deleteProducto';
 import { useHistory } from 'react-router-dom';
+import { CSVLink } from "react-csv";
 
 
 export const MostrarProductos = ({productos,setProductos}) => {
 
+    const  excelProductos = JSON.parse(JSON.stringify(productos));
     const history = useHistory()
 
     const handleDelete = (e)=>{
         const deleteId = e.target.value;
+
+        console.log(deleteId);
 
         setProductos(
             productos.filter( producto =>(
@@ -22,6 +26,13 @@ export const MostrarProductos = ({productos,setProductos}) => {
         const itemSelected = handleSelectedItem(e.target.value);
         history.push(`/editar/${e.target.value}`, itemSelected)  
     }
+
+    const csvData = excelProductos.map( producto =>{
+        delete producto.id;
+        delete producto.bodega;
+        return producto; 
+        
+    })
 
     const handleSelectedItem = (id)=>{
         return productos.filter( producto =>(
@@ -63,6 +74,9 @@ export const MostrarProductos = ({productos,setProductos}) => {
                 ))}
             </tbody>
             </table>
+
+            <CSVLink filename={"inventario.csv"} data={csvData}>Descargar</CSVLink>
+
         </div>
     )
 }

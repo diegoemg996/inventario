@@ -10,7 +10,7 @@ export const EditarForm = ({data}) => {
     const history = useHistory();
 
     const {id: uId, producto: uProducto, cantidad: uCantidad, bodega: uBodega} = data;
-    const[formValues, handleInputChange, reset] = useForm({
+    const[formValues, handleInputChange] = useForm({
         producto: uProducto,
         cantidad: uCantidad,
         bodega: uBodega
