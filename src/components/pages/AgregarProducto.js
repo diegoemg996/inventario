@@ -6,9 +6,9 @@ import { MostrarProductos } from '../agregar-producto/MostrarProductos'
 
 export const AgregarProducto = () => {
 
-    const [productos, setProductos] = useState([])
-    const [activeProduct, setActiveProduct] = useState()
-   
+    const [activeProduct, setActiveProduct] = useState();
+    const [productos, setProductos] = useState([]);
+    
     useEffect(() => {
         getProductos(setProductos);
     }, [])

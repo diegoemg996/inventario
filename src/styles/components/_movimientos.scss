@@ -1,0 +1,10 @@
+.movimientos__input{
+    width: 4rem;
+    border: transparent;
+    border-radius: 5px;
+    margin-right: 1rem;
+    border: 1px solid #afcfee;
+    &:focus {
+        border: 2px solid darken($color: #afcfee, $amount: 10%)
+    }
+}
