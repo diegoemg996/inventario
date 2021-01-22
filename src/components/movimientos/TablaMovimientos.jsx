@@ -44,15 +44,15 @@ export const TablaMovimientos = ({productos}) => {
                     state &&
                     <>
                         <h3>{name}</h3>
-                            <input 
-                                className="agregar__input ml-5"
+                            <input
+                                className="movimientos__input"
                                 type="number"
                                 onChange={handleInputChange}
                                 name="cantidad"
                                 value={cantidad}
                             />
                             <button 
-                                className="btn btn-primary"
+                                className="btn btn-primary movimientos__boton"
                                 onClick={handleAdd}
                             ><i class="fas fa-plus"></i></button>
                             <button 
