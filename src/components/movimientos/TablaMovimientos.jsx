@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { filterByName } from '../../helpers/filterByName'
 import { incrementProducto } from '../../helpers/incrementProducto'
 import { useForm } from '../../hooks/useForm'
 
-export const TablaMovimientos = ({productos}) => {
+export const TablaMovimientos = ({productos, busqueda}) => {
 
 
     const[formValues, handleInputChange, reset] = useForm({
         cantidad: ""
     })
+
+    const [filtroProductos, setFiltroProductos] = useState(productos);
 
     const [activeProduct, setActiveProduct] = useState({
         state: false,
@@ -17,6 +20,10 @@ export const TablaMovimientos = ({productos}) => {
   
     let {cantidad} = formValues;
     const {state, id, name} = activeProduct;
+
+    useEffect(() => {
+        setFiltroProductos(filterByName(busqueda, productos));
+    }, [busqueda, productos]);
 
     const handleItemSelected = (e)=>{
         const nameSelected = productos.filter ( producto => (producto.id === e.target.value) );
@@ -43,7 +50,7 @@ export const TablaMovimientos = ({productos}) => {
                 {
                     state &&
                     <>
-                        <h3>{name}</h3>
+                        <h3 className="movimientos__selected">{name}</h3>
                             <input
                                 className="movimientos__input"
                                 type="number"
@@ -54,18 +61,17 @@ export const TablaMovimientos = ({productos}) => {
                             <button 
                                 className="btn btn-primary movimientos__boton"
                                 onClick={handleAdd}
-                            ><i class="fas fa-plus"></i></button>
+                            ><i className="fas fa-plus"></i></button>
                             <button 
                                 className="btn btn-danger"
                                 onClick={handleMinus}
-                            ><i class="fas fa-minus"></i></button>
+                            ><i className="fas fa-minus"></i></button>
                     </>
                 }
 
             </div>
-
             <div className="mostrar__table">
-                <table className="table table-striped table-hover mt-5 ">
+                <table className="table table-striped table-hover ">
                 <thead>
                     <tr>
                         <th scope="col">Producto</th>
@@ -76,7 +82,7 @@ export const TablaMovimientos = ({productos}) => {
                     </tr>
                 </thead>
                 <tbody >
-                    {productos.map(producto => (
+                    {filtroProductos.map(producto => (
                         <tr 
                             key={producto.id}
                         >

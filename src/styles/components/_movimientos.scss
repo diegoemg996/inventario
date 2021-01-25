@@ -11,3 +11,23 @@
 .movimientos__boton{
     margin-right: 5px;
 }
+
+.movimientos__selected{
+    margin: 0px !important;
+}
+
+.movimientos__busqueda{
+    background: transparent;
+    border: none;
+}
+
+.movimientos__input-busqueda{
+    border: 1px solid transparent;
+    border-bottom: 1px solid  #afcfee !important;
+    width: 12rem;
+    margin-left: 5px;
+}
+
+.movimientos__busqueda-container{
+    margin-bottom: 2rem;
+}

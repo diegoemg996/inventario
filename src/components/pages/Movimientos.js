@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { filterByName } from '../../helpers/filterByName';
 import { getProductos } from '../../helpers/getProductos';
 import { useForm } from '../../hooks/useForm';
 import { BusquedaForm } from '../movimientos/BusquedaForm';
@@ -8,8 +7,6 @@ import { TablaMovimientos } from '../movimientos/TablaMovimientos';
 export const Movimientos = () => {
 
     const [productos, setProductos] = useState([]);
-    const [filterProductos, setFilterProductos] = useState([]);
-
     const[formValues, handleInputChange] = useForm({
         busqueda: ""
     })
@@ -19,15 +16,6 @@ export const Movimientos = () => {
     useEffect(() => {
         getProductos(setProductos);
     }, [])
-
-    useEffect(() => {
-        if(busqueda === ""){
-            setFilterProductos(productos);  
-        }
-        setFilterProductos(filterByName(busqueda, productos));
-    }, [busqueda]);
-
-
 
     return (
         <div className="container">
@@ -39,7 +27,8 @@ export const Movimientos = () => {
             />
 
             <TablaMovimientos
-                productos = {filterProductos}
+                productos = {productos}
+                busqueda={busqueda}
             />
         </div>
     )
