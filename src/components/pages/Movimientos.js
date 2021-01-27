@@ -8,10 +8,9 @@ export const Movimientos = () => {
 
     const [productos, setProductos] = useState([]);
     const[formValues, handleInputChange] = useForm({
-        busqueda: ""
+        busqueda: "",
+        bodega: ""
     })
-
-    const {busqueda} = formValues;
     
     useEffect(() => {
         getProductos(setProductos);
@@ -22,13 +21,13 @@ export const Movimientos = () => {
             <h2 className="text-center mt-5">Movimientos</h2>
 
             <BusquedaForm
-                busqueda={busqueda}
+                inputValues = {formValues}
                 handleInputChange={handleInputChange}
             />
 
             <TablaMovimientos
                 productos = {productos}
-                busqueda={busqueda}
+                inputValues = {formValues}
             />
         </div>
     )

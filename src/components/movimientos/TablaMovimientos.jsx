@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { filterByBodega } from '../../helpers/filterByBodega'
 import { filterByName } from '../../helpers/filterByName'
 import { incrementProducto } from '../../helpers/incrementProducto'
 import { useForm } from '../../hooks/useForm'
 
-export const TablaMovimientos = ({productos, busqueda}) => {
-
+export const TablaMovimientos = ({inputValues, productos}) => {
+    
+    const {busqueda, bodega} = inputValues;
 
     const[formValues, handleInputChange, reset] = useForm({
         cantidad: ""
@@ -17,13 +19,17 @@ export const TablaMovimientos = ({productos, busqueda}) => {
         id: "",
         name: ""
     })
+
+    const [inputError, setInputError] = useState(false);
   
     let {cantidad} = formValues;
     const {state, id, name} = activeProduct;
 
     useEffect(() => {
-        setFiltroProductos(filterByName(busqueda, productos));
-    }, [busqueda, productos]);
+        let tempBusqueda = filterByBodega(bodega, productos);
+        setFiltroProductos(filterByName(busqueda, tempBusqueda ))
+        
+    }, [busqueda, productos, bodega]);
 
     const handleItemSelected = (e)=>{
         const nameSelected = productos.filter ( producto => (producto.id === e.target.value) );
@@ -35,18 +41,28 @@ export const TablaMovimientos = ({productos, busqueda}) => {
     }
 
     const handleAdd = ()=>{
-        incrementProducto(id, cantidad);
-        reset();
+        if(cantidad <= 0){
+            setInputError(true);
+        }else{
+            setInputError(false);
+            incrementProducto(id, cantidad);
+            reset();
+        }
     }
 
     const handleMinus = ()=>{
-        incrementProducto(id, -cantidad);
-        reset();
+        if(cantidad <= 0){
+            setInputError(true);
+        }else{
+            setInputError(false);
+            incrementProducto(id, -cantidad);
+            reset();
+        }
     }
  
     return (
         <>
-            <div>
+            <div className="mt-5">
                 {
                     state &&
                     <>
@@ -68,9 +84,14 @@ export const TablaMovimientos = ({productos, busqueda}) => {
                             ><i className="fas fa-minus"></i></button>
                     </>
                 }
+            {
+                inputError 
+                    &&
+                <p className="mt-1 movimientos__error">Deber ser un numero mayor a 0</p>
+            }
 
             </div>
-            <div className="mostrar__table">
+            <div className="mostrar__table mt-5">
                 <table className="table table-striped table-hover ">
                 <thead>
                     <tr>

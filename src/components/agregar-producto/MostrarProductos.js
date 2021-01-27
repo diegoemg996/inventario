@@ -41,8 +41,8 @@ export const MostrarProductos = ({productos,setProductos}) => {
     }
 
     return (
-        <div className="mostrar__table">
-            <table className="table table-striped table-hover mt-5 ">
+        <div className="mostrar__table mt-5">
+            <table className="table table-striped table-hover">
             <thead>
                 <tr>
                     <th scope="col">Producto</th>
