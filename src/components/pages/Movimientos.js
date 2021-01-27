@@ -28,6 +28,7 @@ export const Movimientos = () => {
             <TablaMovimientos
                 productos = {productos}
                 inputValues = {formValues}
+                handleInputChange={handleInputChange}
             />
         </div>
     )

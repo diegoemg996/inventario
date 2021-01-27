@@ -43,20 +43,22 @@ export const AgregarForm = () => {
                     value={ producto }
                     onChange={ handleInputChange }
                 ></input>
-                <input
-                    type="number"
-                    className="agregar__input"
-                    placeholder="Cantidad"
-                    name="cantidad"
-                    value={ cantidad }
-                    onChange={ handleInputChange }
-                ></input>
+
                 <input
                     type="text"
                     className="agregar__input"
                     placeholder="Bodega"
                     name="bodega"
                     value={ bodega }
+                    onChange={ handleInputChange }
+                ></input>
+
+                <input
+                    type="number"
+                    className="agregar__input"
+                    placeholder="Cantidad"
+                    name="cantidad"
+                    value={ cantidad }
                     onChange={ handleInputChange }
                 ></input>
                

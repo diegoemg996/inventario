@@ -63,6 +63,7 @@ export const TablaMovimientos = ({inputValues, productos}) => {
     return (
         <>
             <div className="mt-5">
+                
                 {
                     state &&
                     <>

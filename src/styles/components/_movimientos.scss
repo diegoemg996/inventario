@@ -19,13 +19,13 @@
 .movimientos__busqueda{
     background: transparent;
     border: none;
+    width: 3%;
 }
 
 .movimientos__input-busqueda{
     border: 1px solid transparent;
     border-bottom: 1px solid  #afcfee !important;
-    width: 12rem;
-    margin-left: 5px;
+    width: 17%;
 }
 
 .movimientos__busqueda-container{
@@ -34,4 +34,8 @@
 
 .movimientos__error{
     color: red;
+}
+
+.movimientos__select{
+    width:100%;
 }

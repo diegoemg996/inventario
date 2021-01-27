@@ -16,16 +16,16 @@ export const BusquedaForm = ({inputValues, handleInputChange}) => {
             />
 
             <select 
+                className="form-select form-select-sm mt-3 movimientos__select"
                 name="bodega" 
                 value={bodega}
                 onChange={handleInputChange}
             >
-                <option value="">-- Seleccione --</option>
+                <option value="">-- Seleccione Bodega --</option>
                 <option value="vitaminas">Vitaminas</option>
                 <option value="rio alamo">Rio Alamo</option>
 
             </select>
-            {bodega}
         </div>
     )
 }
