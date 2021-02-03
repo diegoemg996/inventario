@@ -34,6 +34,7 @@ export const AgregarForm = () => {
             <form 
                 className="agregar__form" 
                 onSubmit={handleSubmit}
+                autocomplete="off"
             >
                 <input
                     type="text"
