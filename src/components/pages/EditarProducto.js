@@ -9,7 +9,7 @@ export const EditarProducto = () => {
 
     return (
         <div className="container">
-            <h2 className="text-center">{producto}</h2>
+            <h2 className="text-center mt-5">{producto}</h2>
             <EditarForm
                 data = {state[0]}
             />

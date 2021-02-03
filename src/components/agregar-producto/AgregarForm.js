@@ -64,7 +64,7 @@ export const AgregarForm = () => {
                
                 <button
                     type="submit"
-                    className="btn btn-primary"
+                    className="btn btn-primary agregar__btn"
                 >Agregar</button>
             </form>
 

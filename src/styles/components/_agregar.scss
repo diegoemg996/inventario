@@ -17,8 +17,24 @@
         border: 3px solid darken($color: #afcfee, $amount: 10%)
     }
 }
-
 .agregar__select{
     width: 12rem;
 }
+
+@media only screen and (max-width: 600px) {
+    .agregar__form {
+      flex-direction: column;
+      margin-top: 2rem;
+    }
+
+    .agregar__input{
+        margin-top: 5px;
+        justify-content: center;
+        height: 3rem;
+    }
+
+    .agregar__btn{
+        margin-top: 1rem;
+    }
+  }
 

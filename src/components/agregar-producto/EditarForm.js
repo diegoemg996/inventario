@@ -67,7 +67,7 @@ export const EditarForm = ({data}) => {
                 ></input>
                 <button
                     type="submit"
-                    className="btn btn-primary"
+                    className="btn btn-primary agregar__btn"
                 >Editar</button>
             </form>
 
