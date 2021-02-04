@@ -28,15 +28,10 @@
     width: 17%;
 }
 
-@media only screen and (max-width: 600px) {
-    .movimientos__input-busqueda{
-        width: 100%;
-    }
-}
 
 
 .movimientos__busqueda-container{
-    margin-bottom: 2rem;
+    margin: 3rem 0;
 }
 
 .movimientos__error{
@@ -46,3 +41,18 @@
 .movimientos__select{
     width:100%;
 }
+
+@media only screen and (max-width: 600px) {
+    .movimientos__busqueda{
+        background: transparent;
+        border: none;
+        width: 5%;
+    }
+    
+    .movimientos__input-busqueda{
+        border: 1px solid transparent;
+        border-bottom: 1px solid  #afcfee !important;
+        width: 95%;
+    }
+}
+

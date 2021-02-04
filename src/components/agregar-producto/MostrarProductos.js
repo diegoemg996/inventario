@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { deleteProducto } from '../../helpers/deleteProducto';
 import { useHistory } from 'react-router-dom';
 import { CSVLink } from "react-csv";
+import { filterByBodega } from '../../helpers/filterByBodega';
+import { filterByName } from '../../helpers/filterByName';
 
 
-export const MostrarProductos = ({productos,setProductos}) => {
+export const MostrarProductos = ({productos,setProductos, inputValues}) => {
+
+    const {busqueda, bodega} = inputValues;
+
+    const [filtroProductos, setFiltroProductos] = useState(productos);
+
+    useEffect(() => {
+        let tempBusqueda = filterByBodega(bodega, productos);
+        setFiltroProductos(filterByName(busqueda, tempBusqueda ))
+        
+    }, [busqueda, productos, bodega]);
 
     const  excelProductos = JSON.parse(JSON.stringify(productos));
     const history = useHistory()
@@ -52,7 +64,7 @@ export const MostrarProductos = ({productos,setProductos}) => {
                 </tr>
             </thead>
             <tbody >
-                {productos.map(producto => (
+                {filtroProductos.map(producto => (
                     <tr key={producto.id}>
                         <td>{producto.producto}</td>
                         <td>{producto.bodega}</td>
