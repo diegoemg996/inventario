@@ -71,12 +71,12 @@ export const MostrarProductos = ({productos,setProductos, inputValues}) => {
                         <td>{producto.cantidad + " kgs"}</td>
                         <td>
                             <button 
-                                className="btn btn-outline-primary"
+                                className="btn btn-outline-primary boton"
                                 value={producto.id}
                                 onClick={handleUpdate}
                             >Editar</button>   
                             <button 
-                                className="btn btn-outline-danger"
+                                className="btn btn-outline-danger boton"
                                 value={producto.id}
                                 onClick={handleDelete}
                             >Borrar</button>
