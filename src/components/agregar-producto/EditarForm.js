@@ -38,7 +38,7 @@ export const EditarForm = ({data}) => {
             <form 
                 className="agregar__form" 
                 onSubmit={handleUpdate}
-                autocomplete="off"
+                autoComplete="off"
             >
                 <input
                     type="text"

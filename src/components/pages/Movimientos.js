@@ -17,7 +17,7 @@ export const Movimientos = () => {
     }, [])
 
     return (
-        <div className="container">
+        <div className="container container-pages">
             <h2 className="text-center mt-5">Movimientos</h2>
 
             <BusquedaForm

@@ -1,5 +1,5 @@
 .agregar__form {
-    margin-top: 5rem;
+    margin-top: 3rem;
     display: flex;
     justify-content: space-evenly;
 
@@ -21,10 +21,9 @@
     width: 12rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 945px) {
     .agregar__form {
       flex-direction: column;
-      margin-top: 2rem;
     }
 
     .agregar__input{

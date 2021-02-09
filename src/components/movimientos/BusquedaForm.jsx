@@ -13,7 +13,7 @@ export const BusquedaForm = ({inputValues, handleInputChange}) => {
                 name="busqueda"
                 value={busqueda}
                 placeholder="Buscar por nombre"
-                autocomplete="off"
+                autoComplete="off"
             />
 
             <select 

@@ -8,7 +8,7 @@ export const EditarProducto = () => {
     const {producto} = state[0];
 
     return (
-        <div className="container">
+        <div className="container container-pages editar">
             <h2 className="text-center mt-5">{producto}</h2>
             <EditarForm
                 data = {state[0]}

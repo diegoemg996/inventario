@@ -20,7 +20,7 @@ export const AgregarProducto = () => {
     }, [])
 
     return (
-        <div className="container">
+        <div className="container container-pages">
 
             <h2 className="text-center mt-5">Agregar Producto</h2>
             <AgregarForm

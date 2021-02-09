@@ -7,21 +7,16 @@ import {
 import { AgregarProducto } from '../components/pages/AgregarProducto';
 import { EditarProducto } from '../components/pages/EditarProducto';
 import { Movimientos } from '../components/pages/Movimientos';
-import { Rentabilidad } from '../components/pages/Rentabilidad';
 import { Navbar } from '../components/ui/Navbar';
 
-
   
-  export const AppRouter = () => {
-      return (
-        <Router>
+export const AppRouter = () => {
+    return (
+        <div className="router__container">
+            <Router>
             <Navbar/>
             <div>
                 <Switch>
-                    <Route 
-                        path="/rentabilidad"
-                        component={ Rentabilidad }
-                    />
                     <Route 
                         path="/agregar-producto"
                         component={ AgregarProducto }
@@ -34,9 +29,15 @@ import { Navbar } from '../components/ui/Navbar';
                         path="/editar/:id"
                         component={ EditarProducto }
                     />
+                    <Route 
+                        path="/"
+                        component={ Movimientos }
+                        exact
+                    />
                 </Switch>
             </div>
         </Router>
+        </div>
       )
   }
   
