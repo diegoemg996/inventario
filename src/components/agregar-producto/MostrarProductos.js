@@ -58,7 +58,6 @@ export const MostrarProductos = ({productos,setProductos, inputValues}) => {
                     <th scope="col">Producto</th>
                     <th scope="col">Bodega</th>
                     <th scope="col">Cantidad</th>
-                    <th scope="col">Caducidad</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -68,7 +67,6 @@ export const MostrarProductos = ({productos,setProductos, inputValues}) => {
                         <td>{producto.producto}</td>
                         <td>{producto.bodega}</td>
                         <td>{producto.cantidad + " kgs"}</td>
-                        <td>{ producto.fecha ? moment(producto.fecha,'YYYY, MM, DD').format('MM-DD-YYYY') : ''}</td>
                         <td>
                             <button 
                                 className="btn btn-outline-primary boton"
