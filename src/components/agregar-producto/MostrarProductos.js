@@ -4,8 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { CSVLink } from "react-csv";
 import { filterByBodega } from '../../helpers/filterByBodega';
 import { filterByName } from '../../helpers/filterByName';
-import moment from 'moment';
-
 
 export const MostrarProductos = ({productos,setProductos, inputValues}) => {
 
