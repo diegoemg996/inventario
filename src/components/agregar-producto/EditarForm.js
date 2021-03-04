@@ -14,10 +14,9 @@ export const EditarForm = ({data}) => {
         producto: uProducto,
         cantidad: uCantidad,
         bodega: uBodega,
-        fecha: uFecha
     })
 
-    let {producto, cantidad, bodega, fecha} = formValues;
+    let {producto, cantidad, bodega} = formValues;
 
 
     const handleUpdate = (e)=>{
@@ -67,14 +66,7 @@ export const EditarForm = ({data}) => {
                     value={ cantidad }
                     onChange={ handleInputChange }
                 ></input>
-                <input
-                    type="date"
-                    className="agregar__input"
-                    placeholder="Fecha"
-                    name="fecha"
-                    value={ fecha }
-                    onChange={ handleInputChange }
-                ></input>
+
                 <button
                     type="submit"
                     className="btn btn-primary agregar__btn"
