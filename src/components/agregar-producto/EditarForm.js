@@ -9,14 +9,15 @@ export const EditarForm = ({data}) => {
 
     const history = useHistory();
 
-    const {id: uId, producto: uProducto, cantidad: uCantidad, bodega: uBodega} = data;
+    const {id: uId, producto: uProducto, cantidad: uCantidad, bodega: uBodega, fecha: uFecha} = data;
     const[formValues, handleInputChange] = useForm({
         producto: uProducto,
         cantidad: uCantidad,
-        bodega: uBodega
+        bodega: uBodega,
+        fecha: uFecha
     })
 
-    let {producto, cantidad, bodega} = formValues;
+    let {producto, cantidad, bodega, fecha} = formValues;
 
 
     const handleUpdate = (e)=>{
@@ -64,6 +65,14 @@ export const EditarForm = ({data}) => {
                     placeholder="Cantidad"
                     name="cantidad"
                     value={ cantidad }
+                    onChange={ handleInputChange }
+                ></input>
+                <input
+                    type="date"
+                    className="agregar__input"
+                    placeholder="Fecha"
+                    name="fecha"
+                    value={ fecha }
                     onChange={ handleInputChange }
                 ></input>
                 <button

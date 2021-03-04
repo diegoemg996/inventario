@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { CSVLink } from "react-csv";
 import { filterByBodega } from '../../helpers/filterByBodega';
 import { filterByName } from '../../helpers/filterByName';
+import moment from 'moment';
 
 
 export const MostrarProductos = ({productos,setProductos, inputValues}) => {
@@ -14,18 +15,15 @@ export const MostrarProductos = ({productos,setProductos, inputValues}) => {
 
     useEffect(() => {
         let tempBusqueda = filterByBodega(bodega, productos);
-        setFiltroProductos(filterByName(busqueda, tempBusqueda ))
-        
+        setFiltroProductos(filterByName(busqueda, tempBusqueda ));        
     }, [busqueda, productos, bodega]);
 
-    const  excelProductos = JSON.parse(JSON.stringify(productos));
+    const  excelProductos = JSON.parse(JSON.stringify(filtroProductos));
     const history = useHistory()
 
     const handleDelete = (e)=>{
         const deleteId = e.target.value;
-
-        console.log(deleteId);
-
+        
         setProductos(
             productos.filter( producto =>(
                producto.id !== deleteId 
@@ -60,6 +58,7 @@ export const MostrarProductos = ({productos,setProductos, inputValues}) => {
                     <th scope="col">Producto</th>
                     <th scope="col">Bodega</th>
                     <th scope="col">Cantidad</th>
+                    <th scope="col">Caducidad</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -69,6 +68,7 @@ export const MostrarProductos = ({productos,setProductos, inputValues}) => {
                         <td>{producto.producto}</td>
                         <td>{producto.bodega}</td>
                         <td>{producto.cantidad + " kgs"}</td>
+                        <td>{ producto.fecha ? moment(producto.fecha,'YYYY, MM, DD').format('MM-DD-YYYY') : ''}</td>
                         <td>
                             <button 
                                 className="btn btn-outline-primary boton"
